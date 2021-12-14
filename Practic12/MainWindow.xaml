@@ -1,0 +1,89 @@
+﻿<Window x:Class="Practic12.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practic12"
+        mc:Ignorable="d"
+        Title="Практическая работа №12" Height="253" Width="392" Loaded="Window_Loaded" ResizeMode="CanMinimize" Icon="1620165536603.png" >
+    <Grid>
+        <Menu VerticalAlignment="Top">
+            <MenuItem x:Name="Info" Header="О программе" ToolTip="О программе" Click="Info_Click"></MenuItem>
+            <MenuItem x:Name="Exit" Header="Выход" ToolTip="Выход" Click="Exit_Click"></MenuItem>
+        </Menu>
+        <TabControl x:Name="task" Margin="0,18,0,-18">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Программа 1" ToolTip="Найти периметр и площадь прямоугольника"/>
+                </TabItem.Header>
+                <Grid>
+                    <GroupBox Header="Исходные данные" Margin="10,10,0,0" HorizontalAlignment="Left" Width="164" Height="125" VerticalAlignment="Top">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Очистить поле" Click="Clear1ProgramFields" ></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid>
+                            <TextBox x:Name="aSideOfSquare" HorizontalAlignment="Left" Height="23" Margin="76,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66" TextChanged="aSideOfSquare_TextChanged" />
+                            <TextBox x:Name="bSideOfSquare" HorizontalAlignment="Left" Height="23" Margin="76,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66" TextChanged="bSideOfSquare_TextChanged" />
+                            <Label Content="Сторона а" HorizontalAlignment="Left" Margin="5,19,0,0" VerticalAlignment="Top" Height="27"/>
+                            <Label Content="Сторона Ь" HorizontalAlignment="Left" Margin="5,59,0,0" VerticalAlignment="Top" Height="27"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Результат" Margin="183,10,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="164" Height="76" VerticalAlignment="Top">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Очистить поле" Click="Clear1ProgramFields"></MenuItem>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid>
+                            <TextBox x:Name="perimeter" HorizontalAlignment="Left" Height="23" Margin="10,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66" IsReadOnly="True"/>
+                            <TextBox x:Name="square" HorizontalAlignment="Left" Height="23" Margin="83,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="61" IsReadOnly="True"/>
+                            <Label Content="Периметр" HorizontalAlignment="Left" Margin="10,-3,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Площадь" HorizontalAlignment="Left" Margin="83,-2,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="Start1Program" Content="Рассчитать" Margin="226,97,0,0" ToolTip="Рассчитывает периметр и площадь прямоугольная по его сторонам" Click="Start1Program_Click" HorizontalAlignment="Left" Width="78" Height="27" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Программа 2" ToolTip="Дано трехзначное число. Вывести число, полученное при прочтении исходного числа справа налево."/>
+                </TabItem.Header>
+                <Grid>
+                    <GroupBox Header="Исходные данные" Margin="10,0,0,124" HorizontalAlignment="Left" Width="150" Height="61" VerticalAlignment="Bottom">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Очистить поле" Click="Clear2ProgramFields" />
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid>
+                            <TextBox x:Name="number" HorizontalAlignment="Left" Height="23" Margin="61,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="66" TextChanged="number_TextChanged" />
+                            <Label Content="Число:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Height="27"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Результат" Margin="10,0,0,62" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="190" Height="56" VerticalAlignment="Bottom">
+                        <GroupBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Очистить поле" Click="Clear2ProgramFields"/>
+                            </ContextMenu>
+                        </GroupBox.ContextMenu>
+                        <Grid>
+                            <TextBox x:Name="outNumber" HorizontalAlignment="Left" Height="23" Margin="105,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="61" IsReadOnly="True"/>
+                            <Label Content="Обратное число:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="33"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="Start2Program" Content="Рассчитать" Margin="220,86,0,0" ToolTip="Переворачивает вводимое число задом наперёд" Click="Start2Program_Click" HorizontalAlignment="Left" Width="78" Height="27" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StatusBar VerticalAlignment="Bottom" Height="25" BorderBrush="Gray" BorderThickness="1">
+            <TextBlock Text="3аданиe: 1"></TextBlock>
+            <TextBlock Opacity="{Binding SelectedIndex, ElementName=task}" Text="3аданиe: 2" Margin="-64, 0, 0, 0" Background="#FFF1EDED"></TextBlock>
+            <Separator></Separator>
+            <TextBlock x:Name="time" Text="00:00"></TextBlock>
+            <Separator></Separator>
+            <TextBlock x:Name="date" Text="01.01.1993"></TextBlock>
+        </StatusBar>
+    </Grid>
+</Window>
